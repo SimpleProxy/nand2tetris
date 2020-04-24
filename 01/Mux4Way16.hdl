@@ -16,5 +16,13 @@ CHIP Mux4Way16 {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    /* three Mux16 */
+    /* first selects a or b, and second selects c or d */
+    /* the third one selects  between the two selected before */
+    
+    Mux16 (a[0..15]=a[0..15], b[0..15]=b[0..15], sel=sel[0], out[0..15]=outOne);
+    Mux16 (a[0..15]=c[0..15], b[0..15]=d[0..15], sel=sel[0], out[0..15]=outTwo);
+    
+    Mux16 (a[0..15]=outOne, b[0..15]=outTwo, sel=sel[1],     out[0..15]=out[0..15]);
+
 }
