@@ -10,11 +10,41 @@
  *                            etc.
  *                            {0, 0, 0, 0, 0, 0, 0, in} if sel == 111
  */
+ 
+/*      
+                                         --a
+                            |----DMux --|
+                            |      |     --b
+             --------DMux --|      |
+            |         |     |      |     --c
+            |         |     |----DMux --|
+   sel -|   |         |            |     --d
+        |   |         |            |
+------DMux--|  sel ---|       sel -|
+            |         |            |     --e
+            |         |     |----DMux --|
+            |         |     |      |     --f
+             --------DMux --|      |
+                            |      |     --g
+                            |----DMux --|
+                                         --h
+
+*/
 
 CHIP DMux8Way {
     IN in, sel[3];
     OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    // Put your code here:
+
+    /* first pass, decides if in goes up or down */
+    DMux (in=in   , sel=sel[2], a=out1 , b=out2 );    
+                  
+    DMux (in=out1 , sel=sel[1], a=out11, b=out21);
+    DMux (in=out2 , sel=sel[1], a=out12, b=out22);
+    
+    DMux (in=out11, sel=sel[0], a=a    , b=b    );
+    DMux (in=out21, sel=sel[0], a=c    , b=d    );
+    DMux (in=out12, sel=sel[0], a=e    , b=f    );
+    DMux (in=out22, sel=sel[0], a=g    , b=h    );
 }
