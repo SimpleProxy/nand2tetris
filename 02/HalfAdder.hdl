@@ -5,6 +5,13 @@
 
 /**
  * Computes the sum of two bits.
+
+a ----------|     |
+  |         | XOR |----- sum
+  |  b -----|     |
+  \     \
+   \     \____
+    \_________| AND |--- carry
  */
 
 CHIP HalfAdder {

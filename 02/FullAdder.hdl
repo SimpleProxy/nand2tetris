@@ -5,6 +5,12 @@
 
 /**
  * Computes the sum of three bits.
+
+                    c-------| Half  |----------------------- sum
+a-----| Half  |-- partsum --| Adder |__ partcarry__
+b-----| Adder |------------------------------------| OR |--- carry
+
+
  */
 
 CHIP FullAdder {
