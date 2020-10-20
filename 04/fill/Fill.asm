@@ -33,8 +33,8 @@
     M=-1
 (FILL_LOOP)
     @LINE
-    M=M+1  // base address incremented
-    D=M
+    MD=M+1  // base address incremented
+    //D=M
     @SCREEN
     A=A+D
     M=-1    // fill a line with ones (black line)
@@ -51,8 +51,8 @@
     M=-1
 (CLEAN_LOOP)
     @CLEANLINE
-    M=M+1  // base address incremented
-    D=M
+    MD=M+1  // base address incremented
+    //D=M
     @SCREEN
     A=A+D
     M=0     // fill a line with ones (black line)
